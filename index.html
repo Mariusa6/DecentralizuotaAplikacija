@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prekybos DApp - Decentralizuota aplikacija</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🛒 Prekybos DApp</h1>
+            <p class="subtitle">Saugi prekyba per Ethereum Blockchain</p>
+            <div id="connection-status" class="status-box">
+                <p id="account-info">Neprisijungęs</p>
+                <p id="network-info"></p>
+                <p id="balance-info"></p>
+            </div>
+            <button id="connect-button" class="btn btn-primary">Prisijungti su MetaMask</button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Sukurti užsakymą -->
+            <section class="card" id="create-section">
+                <h2>📦 Sukurti naują užsakymą</h2>
+                <p class="help-text">Pirkėjas: Sukurkite užsakymą ir sumokėkite ETH</p>
+                
+                <div class="form-group">
+                    <label for="pardavejas">Pardavėjo adresas:</label>
+                    <input type="text" id="pardavejas" placeholder="0x..." class="input-field">
+                </div>
+                
+                <div class="form-group">
+                    <label for="kurjeris">Kurjerio adresas:</label>
+                    <input type="text" id="kurjeris" placeholder="0x..." class="input-field">
+                </div>
+                
+                <div class="form-group">
+                    <label for="aprasymas">Prekės aprašymas:</label>
+                    <input type="text" id="aprasymas" placeholder="pvz. iPhone 15 Pro" class="input-field">
+                </div>
+                
+                <div class="form-group">
+                    <label for="kaina">Kaina (ETH):</label>
+                    <input type="number" id="kaina" placeholder="0.01" step="0.001" class="input-field">
+                </div>
+                
+                <button onclick="sukurtiUzsakyma()" class="btn btn-success">Sukurti užsakymą</button>
+            </section>
+
+            <!-- Peržiūrėti užsakymą -->
+            <section class="card">
+                <h2>🔍 Peržiūrėti užsakymą</h2>
+                
+                <div class="form-group">
+                    <label for="uzsakymo-id">Užsakymo ID:</label>
+                    <input type="number" id="uzsakymo-id" placeholder="1" class="input-field">
+                </div>
+                
+                <button onclick="gautiUzsakyma()" class="btn btn-info">Peržiūrėti</button>
+                
+                <div id="uzsakymo-info" class="info-box" style="display: none;">
+                    <h3>Užsakymo informacija:</h3>
+                    <div id="uzsakymo-detalės"></div>
+                </div>
+            </section>
+
+            <!-- Valdyti užsakymą -->
+            <section class="card">
+                <h2>⚙️ Valdyti užsakymą</h2>
+                <p class="help-text">Pasirinkite veiksmą pagal savo vaidmenį</p>
+                
+                <div class="form-group">
+                    <label for="veiksmo-id">Užsakymo ID:</label>
+                    <input type="number" id="veiksmo-id" placeholder="1" class="input-field">
+                </div>
+                
+                <div class="button-group">
+                    <button onclick="patvirtintiIsiuntima()" class="btn btn-warning">
+                        📤 Patvirtinti išsiuntimą (Pardavėjas)
+                    </button>
+                    <button onclick="patvirtintiPristatyma()" class="btn btn-warning">
+                        🚚 Patvirtinti pristatymą (Kurjeris)
+                    </button>
+                    <button onclick="patvirtintiGavima()" class="btn btn-success">
+                        ✅ Patvirtinti gavimą (Pirkėjas)
+                    </button>
+                    <button onclick="atsauktiUzsakyma()" class="btn btn-danger">
+                        ❌ Atšaukti užsakymą (Pirkėjas)
+                    </button>
+                </div>
+            </section>
+
+            <!-- Sutarties informacija -->
+            <section class="card">
+                <h2>📊 Sutarties informacija</h2>
+                <div id="contract-info" class="info-box">
+                    <p><strong>Contract Address:</strong> <span id="contract-address">-</span></p>
+                    <p><strong>Užsakymų skaičius:</strong> <span id="uzsakymu-skaicius">-</span></p>
+                    <p><strong>Sutarties balansas:</strong> <span id="contract-balance">-</span></p>
+                </div>
+                <button onclick="atnaujintiSutartiesInfo()" class="btn btn-secondary">🔄 Atnaujinti</button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>💡 Patarimas: Naudokite skirtingas MetaMask paskyras skirtingiems vaidmenims (pirkėjas, pardavėjas, kurjeris)</p>
+            <p>⚠️ Testinis projektas - naudokite tik Sepolia testnet</p>
+        </footer>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Laukiama transakcijos...</p>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
