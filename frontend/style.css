@@ -59,6 +59,15 @@ header h1 {
     font-size: 0.95em;
 }
 
+/* Header button group */
+header .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
 /* ==============================================
    BUTTONS
    ============================================== */
@@ -325,6 +334,18 @@ header h1 {
 .notification.info {
     background: #17a2b8;
     color: white;
+}
+
+.notification.warning {
+    background: #ffc107;
+    color: #333;
+    font-weight: 600;
+}
+
+.notification a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 /* ==============================================

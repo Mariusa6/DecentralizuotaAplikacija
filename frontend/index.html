@@ -11,21 +11,29 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>Prekybos DApp</h1>
+            <h1>🛒 Prekybos DApp</h1>
             <p class="subtitle">Saugi prekyba per Ethereum Blockchain</p>
             <div id="connection-status" class="status-box">
                 <p id="account-info">Neprisijungęs</p>
                 <p id="network-info"></p>
                 <p id="balance-info"></p>
             </div>
-            <button id="connect-button" class="btn btn-primary">Prisijungti su MetaMask</button>
+            <div class="button-group">
+                <button id="connect-button" class="btn btn-primary">Prisijungti su MetaMask</button>
+                <button id="disconnect-button" class="btn btn-danger" style="display: none;">
+                    🔌 Atsijungti
+                </button>
+                <button id="switch-network-button" class="btn btn-warning" style="display: none;">
+                    🔄 Perjungti į Sepolia
+                </button>
+            </div>
         </header>
 
         <!-- Main Content -->
         <main>
             <!-- Sukurti užsakymą -->
             <section class="card" id="create-section">
-                <h2>Sukurti naują užsakymą</h2>
+                <h2>📦 Sukurti naują užsakymą</h2>
                 <p class="help-text">Pirkėjas: Sukurkite užsakymą ir sumokėkite ETH</p>
                 
                 <div class="form-group">
@@ -53,7 +61,7 @@
 
             <!-- Peržiūrėti užsakymą -->
             <section class="card">
-                <h2>Peržiūrėti užsakymą</h2>
+                <h2>🔍 Peržiūrėti užsakymą</h2>
                 
                 <div class="form-group">
                     <label for="uzsakymo-id">Užsakymo ID:</label>
@@ -70,7 +78,7 @@
 
             <!-- Valdyti užsakymą -->
             <section class="card">
-                <h2>Valdyti užsakymą</h2>
+                <h2>⚙️ Valdyti užsakymą</h2>
                 <p class="help-text">Pasirinkite veiksmą pagal savo vaidmenį</p>
                 
                 <div class="form-group">
@@ -80,36 +88,36 @@
                 
                 <div class="button-group">
                     <button onclick="patvirtintiIsiuntima()" class="btn btn-warning">
-                        Patvirtinti išsiuntimą (Pardavėjas)
+                        📤 Patvirtinti išsiuntimą (Pardavėjas)
                     </button>
                     <button onclick="patvirtintiPristatyma()" class="btn btn-warning">
-                        Patvirtinti pristatymą (Kurjeris)
+                        🚚 Patvirtinti pristatymą (Kurjeris)
                     </button>
                     <button onclick="patvirtintiGavima()" class="btn btn-success">
-                        Patvirtinti gavimą (Pirkėjas)
+                        ✅ Patvirtinti gavimą (Pirkėjas)
                     </button>
                     <button onclick="atsauktiUzsakyma()" class="btn btn-danger">
-                        Atšaukti užsakymą (Pirkėjas)
+                        ❌ Atšaukti užsakymą (Pirkėjas)
                     </button>
                 </div>
             </section>
 
             <!-- Sutarties informacija -->
             <section class="card">
-                <h2>Sutarties informacija</h2>
+                <h2>📊 Sutarties informacija</h2>
                 <div id="contract-info" class="info-box">
                     <p><strong>Contract Address:</strong> <span id="contract-address">-</span></p>
                     <p><strong>Užsakymų skaičius:</strong> <span id="uzsakymu-skaicius">-</span></p>
                     <p><strong>Sutarties balansas:</strong> <span id="contract-balance">-</span></p>
                 </div>
-                <button onclick="atnaujintiSutartiesInfo()" class="btn btn-secondary">Atnaujinti</button>
+                <button onclick="atnaujintiSutartiesInfo()" class="btn btn-secondary">🔄 Atnaujinti</button>
             </section>
         </main>
 
         <!-- Footer -->
         <footer>
-            <p>Patarimas: Naudokite skirtingas MetaMask paskyras skirtingiems vaidmenims (pirkėjas, pardavėjas, kurjeris)</p>
-            <p>Testinis projektas - naudokite tik Sepolia testnet</p>
+            <p>💡 Patarimas: Naudokite skirtingas MetaMask paskyras skirtingiems vaidmenims (pirkėjas, pardavėjas, kurjeris)</p>
+            <p>⚠️ Testinis projektas - naudokite tik Sepolia testnet</p>
         </footer>
     </div>
 
